@@ -34,3 +34,8 @@ export interface Announcement {
     body: string;
     ctaLabel?: string;
 }
+
+export interface RecentlyViewedItem {
+    id: ID;
+    imageUrl: string;
+}

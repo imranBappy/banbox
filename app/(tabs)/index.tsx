@@ -1,10 +1,11 @@
 import { AnnouncementCard } from '@/components/home/AnnouncementCard';
 import { Header } from '@/components/home/Header';
+import { RecentlyViewed } from '@/components/home/RecentlyViewed';
 import { fetchHome } from '@/services/home';
 import { applyHomePayload, useBanboxStore } from '@/store';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
-import { Announcement } from '@/types/home';
+import { Announcement, RecentlyViewedItem } from '@/types/home';
 import { useCallback, useEffect, type FC } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -16,6 +17,7 @@ export const HomeScreen: FC = () => {
     const user = useBanboxStore((s) => s.user);
     const accessToken = useBanboxStore((s) => s.accessToken);
     const announcement = useBanboxStore((s) => s.announcement);
+    const recentlyViewedProducts = useBanboxStore((s) => s.recentlyViewedProducts);
     const loadHome = useCallback(async () => {
         try {
             const data = await fetchHome(accessToken);
@@ -39,6 +41,7 @@ export const HomeScreen: FC = () => {
                     }}
                 />
                 <AnnouncementCard announcement={announcement as unknown as Announcement} />
+                <RecentlyViewed items={recentlyViewedProducts as unknown as RecentlyViewedItem[]} />
             </ScrollView>
         </View>
     );
