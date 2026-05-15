@@ -1,50 +1,125 @@
-# Welcome to your Expo app 👋
+# Banbox
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Style delivered to your door** — a cross-platform fashion shopping app built with [Expo](https://expo.dev) and [React Native](https://reactnative.dev).
 
-## Get started
+Banbox combines a personalized home feed, product discovery, and order tracking in a single mobile experience for iOS, Android, and web.
 
-1. Install dependencies
+## Screenshots
 
-   ```bash
-   npm install
-   ```
+<p align="center">
+  <img src="./assets/docs/home-top.png" alt="Banbox home — header, announcement, recently viewed, orders, and stories" width="280" />
+  <img src="./assets/docs/home-products.png" alt="Banbox home — new items, most popular, and categories" width="280" />
+</p>
 
-2. Start the app
+## Features
 
-   ```bash
-   npx expo start
-   ```
+### Home
 
-In the output, you'll find options to open the app in a
+- Personalized greeting and profile header
+- Announcement banner with call-to-action
+- Recently viewed products (horizontal avatars)
+- Order status shortcuts (To Pay, To Receive, To Review)
+- Stories carousel with live badges
+- New Items, Most Popular, and Categories sections
+- Flash sale countdown and “Just for you” recommendations
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Navigation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Five bottom tabs:
 
-## Get a fresh project
+| Tab | Route | Status |
+|-----|-------|--------|
+| Home | `/(tabs)/` | Implemented |
+| Wishlist | `/(tabs)/wishlist` | Coming soon |
+| Cart | `/(tabs)/cart` | Coming soon |
+| Orders | `/(tabs)/orders` | Coming soon |
+| Profile | `/(tabs)/profile` | Coming soon |
 
-When you're ready, run:
+### App experience
 
-```bash
-npm run reset-project
+- Light and dark themes (system-aware)
+- Animated splash screen on launch
+- Route-level error boundaries with recovery UI
+- Persisted state (auth, wishlist, recently viewed) via Zustand + AsyncStorage
+
+## Tech stack
+
+| Layer | Choice |
+|-------|--------|
+| Framework | Expo SDK 54, React Native 0.81 |
+| Routing | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based) |
+| Language | TypeScript (strict) |
+| State | [Zustand](https://github.com/pmndrs/zustand) with persistence |
+| Lists | [@shopify/flash-list](https://shopify.github.io/flash-list/) |
+| Icons | [Lucide](https://lucide.dev/) via `lucide-react-native` |
+| Images | `expo-image` |
+| API | `fetch` wrapper in `libs/api.ts` |
+
+**Expo experiments enabled:** typed routes, React Compiler, New Architecture.
+
+## Project structure
+
+```
+Banbox/
+├── app/                    # Expo Router screens
+│   ├── _layout.tsx         # Root layout, splash, error boundary
+│   └── (tabs)/             # Bottom tab navigator
+├── components/
+│   ├── home/               # Home feed sections
+│   ├── splash/             # Animated splash
+│   ├── error/              # Error boundaries & fallback UI
+│   └── ui/                 # Shared UI (Icon, Avatar, Badge, …)
+├── constants/              # App name, API URL, tab config
+├── hooks/                  # Splash, countdown, color scheme
+├── libs/                   # API client (`apiRequest`)
+├── services/               # `fetchHome`, auth, products
+├── store/                  # Zustand store & slices
+├── theme/                  # Colors, spacing, typography, ThemeProvider
+├── types/                  # Shared TypeScript types
+└── assets/images/          # Icons, splash, app icons
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Path alias: `@/*` maps to the project root (see `tsconfig.json`).
+
+## Quick start
+
+```bash
+npm install
+npx expo start
+```
+
+For full environment setup (Xcode, Android Studio, native builds, API configuration), see **[setup.md](./setup.md)**.
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start Expo dev server |
+| `npm run ios` | Build and run on iOS simulator/device |
+| `npm run android` | Build and run on Android emulator/device |
+| `npm run web` | Run in the browser |
+| `npm run lint` | Run ESLint (`eslint-config-expo`) |
+
+## Backend API
+
+The app loads the home feed from `GET /home` on the server defined in `constants/index.ts` (`API_BASE_URL`). Auth endpoints are expected under `/home/login`, `/home/register`, and `/home/me`. See `services/` and `libs/api.ts` for request shapes.
+
+If the API is unreachable during development, the home screen still renders; sections may be empty until data loads.
+
+## Configuration
+
+| Setting | Location |
+|---------|----------|
+| API base URL | `constants/index.ts` → `API_BASE_URL` |
+| App display name / bundle IDs | `app.json` |
+| Splash duration | `constants/index.ts` → `SPLASH_MIN_DURATION_MS` |
 
 ## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [React Native](https://reactnative.dev/docs/getting-started)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## License
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Private project — all rights reserved unless otherwise specified.

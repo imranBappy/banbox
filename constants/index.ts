@@ -1,7 +1,7 @@
 export const APP_NAME = 'Banbox';
 export const APP_TAGLINE = 'Style delivered to your door';
 
-export const API_BASE_URL = 'http://localhost:4000';
+export const API_BASE_URL = 'http://139.59.122.17:4000';
 
 export const SPLASH_MIN_DURATION_MS = 1800;
 
