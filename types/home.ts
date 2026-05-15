@@ -39,3 +39,11 @@ export interface RecentlyViewedItem {
     id: ID;
     imageUrl: string;
 }
+
+export type OrderStatusKey = 'toPay' | 'toReceive' | 'toReview';
+
+export interface OrderStatus {
+    key: OrderStatusKey;
+    label: string;
+    hasBadge?: boolean;
+}
