@@ -1,4 +1,4 @@
-import type { AuthUser, Product } from '@/store/entities';
+import type { AuthUser, } from '@/store/entities';
 export type ID = string;
 
 /** Raw `/home` response; fields are normalized in `applyHomePayload`. */
@@ -53,4 +53,15 @@ export interface Story {
     imageUrl: string;
     isLive?: boolean;
     author?: string;
+}
+export interface Product {
+    id: ID;
+    title: string;
+    imageUrl: string;
+    price: number;
+    currency: string;
+    oldPrice?: number;
+    likes?: number;
+    badge?: 'new' | 'sale' | 'hot';
+    discountPercent?: number;
 }

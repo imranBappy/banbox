@@ -1,10 +1,12 @@
 import { AnnouncementCard } from '@/components/home/AnnouncementCard';
 import { Header } from '@/components/home/Header';
+import { MostPopular } from '@/components/home/MostPopular';
+import { NewItems } from '@/components/home/NewItems';
 import { OrderStatuses } from '@/components/home/OrderStatuses';
 import { RecentlyViewed } from '@/components/home/RecentlyViewed';
 import { Stories } from '@/components/home/Stories';
 import { fetchHome } from '@/services/home';
-import { applyHomePayload, useBanboxStore } from '@/store';
+import { Product, applyHomePayload, useBanboxStore } from '@/store';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
 import { Announcement, OrderStatus, RecentlyViewedItem, Story } from '@/types/home';
@@ -22,7 +24,8 @@ export const HomeScreen: FC = () => {
     const recentlyViewedProducts = useBanboxStore((s) => s.recentlyViewedProducts);
     const orderStatusesProducts = useBanboxStore((s) => s.orderStatuses);
     const storiesProducts = useBanboxStore((s) => s.stories);
-
+    const newItemsProducts = useBanboxStore((s) => s.newItems);
+    const mostPopularProducts = useBanboxStore((s) => s.mostPopularItems);
     const loadHome = useCallback(async () => {
         try {
             const data = await fetchHome(accessToken);
@@ -49,6 +52,8 @@ export const HomeScreen: FC = () => {
                 <RecentlyViewed items={recentlyViewedProducts as unknown as RecentlyViewedItem[]} />
                 <OrderStatuses items={orderStatusesProducts as unknown as OrderStatus[]} />
                 <Stories stories={storiesProducts as unknown as Story[]} />
+                <NewItems items={newItemsProducts as unknown as Product[]} />
+                <MostPopular items={mostPopularProducts as unknown as Product[]} />
             </ScrollView>
         </View>
     );
