@@ -2,6 +2,7 @@ import { AnnouncementCard } from '@/components/home/AnnouncementCard';
 import { Categories } from '@/components/home/Categories';
 import { FlashSale } from '@/components/home/FlashSale';
 import { Header } from '@/components/home/Header';
+import { JustForYou } from '@/components/home/JustForYou';
 import { MostPopular } from '@/components/home/MostPopular';
 import { NewItems } from '@/components/home/NewItems';
 import { OrderStatuses } from '@/components/home/OrderStatuses';
@@ -9,7 +10,7 @@ import { RecentlyViewed } from '@/components/home/RecentlyViewed';
 import { Stories } from '@/components/home/Stories';
 import { fetchHome } from '@/services/home';
 import { Product, applyHomePayload, useBanboxStore } from '@/store';
-import { useColors, useThemeContext } from '@/theme';
+import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
 import { Announcement, OrderStatus, RecentlyViewedItem, Story } from '@/types';
 import { useCallback, useEffect, type FC } from 'react';
@@ -30,7 +31,7 @@ export const HomeScreen: FC = () => {
     const mostPopularProducts = useBanboxStore((s) => s.mostPopularItems);
     const categoriesProducts = useBanboxStore((s) => s.categories);
     const flashSaleProducts = useBanboxStore((s) => s.flashSaleProducts);
-    const {toggle} = useThemeContext()
+    const justForYouProducts = useBanboxStore((s) => s.justForYouProducts);
     
     const loadHome = useCallback(async () => {
         try {
@@ -68,6 +69,7 @@ export const HomeScreen: FC = () => {
                 <MostPopular items={mostPopularProducts as unknown as Product[]} />
                 <Categories items={categoriesProducts as unknown as Category[]} />
                 <FlashSale products={flashSaleProducts as unknown as Product[]} />
+                <JustForYou items={justForYouProducts as unknown as Product[]} />
             </ScrollView>
         </View>
     );
