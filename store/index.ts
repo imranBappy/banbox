@@ -2,12 +2,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+import { createAnnouncementSlice } from './slices/announcementSlice';
 import { createAuthSlice } from './slices/authSlice';
 import { createCategorySlice } from './slices/categorySlice';
 import { createFlashSaleSlice } from './slices/flashSaleSlice';
 import { createJustForYouSlice } from './slices/justForYouSlice';
 import { createMostPopularSlice } from './slices/mostPopularSlice';
 import { createNewItemsSlice } from './slices/newItemsSlice';
+import { createOrderStatusesSlice } from './slices/orderStatusesSlice';
 import { createStoriesSlice } from './slices/storiesSlice';
 import { createTopProductsSlice } from './slices/topProductsSlice';
 import { createViewedSlice } from './slices/viewedSlice';
@@ -29,6 +31,8 @@ export const useBanboxStore = create<BanboxStore>()(
             ...createFlashSaleSlice(...args),
             ...createTopProductsSlice(...args),
             ...createJustForYouSlice(...args),
+            ...createAnnouncementSlice(...args),
+            ...createOrderStatusesSlice(...args),
         }),
         {
             name: STORAGE_KEY,
@@ -38,5 +42,6 @@ export const useBanboxStore = create<BanboxStore>()(
     ),
 );
 
+export { applyHomePayload } from './applyHomePayload';
 export type { AuthUser, Category, Product, Story } from './entities';
 export type { BanboxStore } from './types';

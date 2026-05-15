@@ -1,36 +1,52 @@
 import { Header } from '@/components/home/Header';
+import { fetchHome } from '@/services/home';
+import { applyHomePayload, useBanboxStore } from '@/store';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
+import { useCallback, useEffect, type FC } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+const PLACEHOLDER_AVATAR = 'https://via.placeholder.com/150';
 
+export const HomeScreen: FC = () => {
+    const c = useColors();
+    const insets = useSafeAreaInsets();
+    const user = useBanboxStore((s) => s.user);
+    const accessToken = useBanboxStore((s) => s.accessToken);
+    const loadHome = useCallback(async () => {
+        try {
+            const data = await fetchHome(accessToken);
+            applyHomePayload(useBanboxStore.setState, data);
+        } catch {
+            // Backend may be offline during development.
+        }
+    }, [accessToken]);
 
-export const HomeScreen: React.FC = () => {
-  const c = useColors();
-  const insets = useSafeAreaInsets();
+    useEffect(() => {
+        void loadHome();
+    }, [loadHome]);
 
-  return (
-    <View style={[styles.root, { backgroundColor: c.surface }]}>
-      <ScrollView
-      contentContainerStyle={[styles.content, { paddingTop: insets.top }]}
-      >
-        <Header user={{
-          name: 'John Doe',
-          avatarUrl: 'https://via.placeholder.com/150',
-        }} />
-      </ScrollView>
-    </View>
-  );
+    return (
+        <View style={[styles.root, { backgroundColor: c.surface }]}>
+            <ScrollView contentContainerStyle={[styles.content, { paddingTop: insets.top }]}>
+                <Header
+                    user={{
+                        name: user?.name ?? user?.email ?? 'Guest',
+                        avatarUrl: user?.avatarUrl ?? PLACEHOLDER_AVATAR,
+                    }}
+                />
+            </ScrollView>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  root: { flex: 1 },
-  content: {
-    paddingHorizontal: spacing.screen,
-    paddingBottom: spacing.lg,
-  },
-
+    root: { flex: 1 },
+    content: {
+        paddingHorizontal: spacing.screen,
+        paddingBottom: spacing.lg,
+    },
 });
 
 export default HomeScreen;
