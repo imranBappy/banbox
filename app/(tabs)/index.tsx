@@ -1,3 +1,4 @@
+import { Boundary } from '@/components/error';
 import { AnnouncementCard } from '@/components/home/AnnouncementCard';
 import { Categories } from '@/components/home/Categories';
 import { FlashSale } from '@/components/home/FlashSale';
@@ -12,7 +13,7 @@ import { fetchHome } from '@/services/home';
 import { Product, applyHomePayload, useBanboxStore } from '@/store';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
-import { Announcement, OrderStatus, RecentlyViewedItem, Story } from '@/types';
+import { Announcement, Category, OrderStatus, RecentlyViewedItem, Story } from '@/types';
 import { useCallback, useEffect, type FC } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -51,25 +52,44 @@ export const HomeScreen: FC = () => {
             <ScrollView contentContainerStyle={[styles.content, { paddingTop: insets.top }]}
             showsVerticalScrollIndicator={false}
             >
-                <Header
-                    user={{
-                        name: user?.name ?? user?.email ?? 'Guest',
-                        avatarUrl: user?.avatarUrl ?? '',
-                    }}
-                    
-                    onPressGrid={() => {}}
-                    onPressMenu={() => {}}
-                    onPressActivity={() => {}}
-                />
-                <AnnouncementCard announcement={announcement as unknown as Announcement} />
-                <RecentlyViewed items={recentlyViewedProducts as unknown as RecentlyViewedItem[]} />
-                <OrderStatuses items={orderStatusesProducts as unknown as OrderStatus[]} />
-                <Stories stories={storiesProducts as unknown as Story[]} />
-                <NewItems items={newItemsProducts as unknown as Product[]} />
-                <MostPopular items={mostPopularProducts as unknown as Product[]} />
-                <Categories items={categoriesProducts as unknown as Category[]} />
-                <FlashSale products={flashSaleProducts as unknown as Product[]} />
-                <JustForYou items={justForYouProducts as unknown as Product[]} />
+                <Boundary name="Header">
+                    <Header
+                        user={{
+                            name: user?.name ?? user?.email ?? 'Guest',
+                            avatarUrl: user?.avatarUrl ?? '',
+                        }}
+                        onPressGrid={() => {}}
+                        onPressMenu={() => {}}
+                        onPressActivity={() => {}}
+                    />
+                </Boundary>
+                <Boundary name="Announcement">
+                    <AnnouncementCard announcement={announcement as unknown as Announcement} />
+                </Boundary>
+                <Boundary name="Recently viewed">
+                    <RecentlyViewed items={recentlyViewedProducts as unknown as RecentlyViewedItem[]} />
+                </Boundary>
+                <Boundary name="Orders">
+                    <OrderStatuses items={orderStatusesProducts as unknown as OrderStatus[]} />
+                </Boundary>
+                <Boundary name="Stories">
+                    <Stories stories={storiesProducts as unknown as Story[]} />
+                </Boundary>
+                <Boundary name="New items">
+                    <NewItems items={newItemsProducts as unknown as Product[]} />
+                </Boundary>
+                <Boundary name="Most popular">
+                    <MostPopular items={mostPopularProducts as unknown as Product[]} />
+                </Boundary>
+                <Boundary name="Categories">
+                    <Categories items={categoriesProducts as unknown as Category[]} />
+                </Boundary>
+                <Boundary name="Flash sale">
+                    <FlashSale products={flashSaleProducts as unknown as Product[]} />
+                </Boundary>
+                <Boundary name="Just for you">
+                    <JustForYou items={justForYouProducts as unknown as Product[]} />
+                </Boundary>
             </ScrollView>
         </View>
     );

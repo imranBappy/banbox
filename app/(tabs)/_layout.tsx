@@ -1,13 +1,18 @@
 import type { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { useNavigationState } from '@react-navigation/native';
-import { Tabs } from 'expo-router';
+import { Tabs, type ErrorBoundaryProps } from 'expo-router';
 import React from 'react';
 import type { LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 import { TabBarButton } from '@/components/TabBarButton';
+import { RouteErrorBoundary } from '@/components/error';
 import type { IconName } from '@/components/ui/Icon';
 import { useColors } from '@/theme';
+
+export function ErrorBoundary(props: ErrorBoundaryProps) {
+  return <RouteErrorBoundary {...props} scope="tab" />;
+}
 
 const TAB_BY_ROUTE: Record<string, { key: string; label: string; icon: IconName }> = {
   index: { key: 'index', label: 'Home', icon: 'home' },

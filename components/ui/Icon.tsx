@@ -1,22 +1,22 @@
-import React from 'react';
 import {
-  ArrowRight,
-  ChevronRight,
-  Clock,
-  Heart,
-  House,
-  LayoutGrid,
-  List,
-  Menu,
-  Moon,
-  Play,
-  Search,
-  Settings,
-  ShoppingBag,
-  Star,
-  Sun,
-  User,
+    ArrowRight,
+    ChevronRight,
+    Clock,
+    Heart,
+    House,
+    LayoutGrid,
+    List,
+    Menu,
+    Moon,
+    Play,
+    Search,
+    Settings,
+    ShoppingBag,
+    Star,
+    Sun,
+    User,
 } from 'lucide-react-native';
+import React from 'react';
 
 export type IconName =
   | 'home'
