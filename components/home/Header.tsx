@@ -81,7 +81,7 @@ const IconButton: React.FC<{
 );
 
 const styles = StyleSheet.create({
-    topRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+    topRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingTop: spacing.md },
     activityPill: {
         paddingHorizontal: spacing.base,
         height: 36,

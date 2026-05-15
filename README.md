@@ -27,13 +27,13 @@ Banbox combines a personalized home feed, product discovery, and order tracking 
 
 Five bottom tabs:
 
-| Tab | Route | Status |
-|-----|-------|--------|
-| Home | `/(tabs)/` | Implemented |
+| Tab      | Route              | Status      |
+| -------- | ------------------ | ----------- |
+| Home     | `/(tabs)/`         | Implemented |
 | Wishlist | `/(tabs)/wishlist` | Coming soon |
-| Cart | `/(tabs)/cart` | Coming soon |
-| Orders | `/(tabs)/orders` | Coming soon |
-| Profile | `/(tabs)/profile` | Coming soon |
+| Cart     | `/(tabs)/cart`     | Coming soon |
+| Orders   | `/(tabs)/orders`   | Coming soon |
+| Profile  | `/(tabs)/profile`  | Coming soon |
 
 ### App experience
 
@@ -44,16 +44,16 @@ Five bottom tabs:
 
 ## Tech stack
 
-| Layer | Choice |
-|-------|--------|
-| Framework | Expo SDK 54, React Native 0.81 |
-| Routing | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based) |
-| Language | TypeScript (strict) |
-| State | [Zustand](https://github.com/pmndrs/zustand) with persistence |
-| Lists | [@shopify/flash-list](https://shopify.github.io/flash-list/) |
-| Icons | [Lucide](https://lucide.dev/) via `lucide-react-native` |
-| Images | `expo-image` |
-| API | `fetch` wrapper in `libs/api.ts` |
+| Layer     | Choice                                                                 |
+| --------- | ---------------------------------------------------------------------- |
+| Framework | Expo SDK 54, React Native 0.81                                         |
+| Routing   | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based) |
+| Language  | TypeScript (strict)                                                    |
+| State     | [Zustand](https://github.com/pmndrs/zustand) with persistence          |
+| Lists     | [@shopify/flash-list](https://shopify.github.io/flash-list/)           |
+| Icons     | [Lucide](https://lucide.dev/) via `lucide-react-native`                |
+| Images    | `expo-image`                                                           |
+| API       | `fetch` wrapper in `libs/api.ts`                                       |
 
 **Expo experiments enabled:** typed routes, React Compiler, New Architecture.
 
@@ -92,13 +92,13 @@ For full environment setup (Xcode, Android Studio, native builds, API configurat
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start Expo dev server |
-| `npm run ios` | Build and run on iOS simulator/device |
+| Command           | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm start`       | Start Expo dev server                    |
+| `npm run ios`     | Build and run on iOS simulator/device    |
 | `npm run android` | Build and run on Android emulator/device |
-| `npm run web` | Run in the browser |
-| `npm run lint` | Run ESLint (`eslint-config-expo`) |
+| `npm run web`     | Run in the browser                       |
+| `npm run lint`    | Run ESLint (`eslint-config-expo`)        |
 
 ## Backend API
 
@@ -108,11 +108,11 @@ If the API is unreachable during development, the home screen still renders; sec
 
 ## Configuration
 
-| Setting | Location |
-|---------|----------|
-| API base URL | `constants/index.ts` → `API_BASE_URL` |
-| App display name / bundle IDs | `app.json` |
-| Splash duration | `constants/index.ts` → `SPLASH_MIN_DURATION_MS` |
+| Setting                       | Location                                        |
+| ----------------------------- | ----------------------------------------------- |
+| API base URL                  | `constants/index.ts` → `API_BASE_URL`           |
+| App display name / bundle IDs | `app.json`                                      |
+| Splash duration               | `constants/index.ts` → `SPLASH_MIN_DURATION_MS` |
 
 ## Learn more
 
