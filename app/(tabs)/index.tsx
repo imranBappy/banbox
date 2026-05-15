@@ -1,30 +1,34 @@
-import { ComingSoonScreen } from '@/components/ComingSoon';
+import { Header } from '@/components/home/Header';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 
 export const HomeScreen: React.FC = () => {
   const c = useColors();
+  const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView style={[styles.root, { backgroundColor: c.surface }]} edges={['top']}>
-      <ComingSoonScreen tabLabel="Home" icon="home" />
-    </SafeAreaView>
+    <View style={[styles.root, { backgroundColor: c.surface }]}>
+      <ScrollView
+      contentContainerStyle={[styles.content, { paddingTop: insets.top }]}
+      >
+        <Header user={{
+          name: 'John Doe',
+          avatarUrl: 'https://via.placeholder.com/150',
+        }} />
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  content: {
     paddingHorizontal: spacing.screen,
-    paddingTop: spacing.base,
-    paddingBottom: spacing.md,
-    gap: spacing.sm,
+    paddingBottom: spacing.lg,
   },
 
 });
