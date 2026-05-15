@@ -1,6 +1,6 @@
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { radii, spacing, typography, useColors } from '@/theme';
-import { OrderStatus, OrderStatusKey } from '@/types/inddex';
+import { OrderStatus, OrderStatusKey } from '@/types';
 import React, { memo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 

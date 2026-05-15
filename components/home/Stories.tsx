@@ -1,7 +1,7 @@
 import { Icon } from '@/components/ui/Icon';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { radii, spacing, typography, useColors } from '@/theme';
-import { Story } from '@/types/inddex';
+import { Story } from '@/types';
 import { FlashList } from '@shopify/flash-list';
 import { Image } from 'expo-image';
 import React, { memo } from 'react';

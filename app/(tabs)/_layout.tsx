@@ -3,6 +3,7 @@ import { useNavigationState } from '@react-navigation/native';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import type { LayoutChangeEvent } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { TabBarButton } from '@/components/TabBarButton';
 import type { IconName } from '@/components/ui/Icon';
@@ -55,6 +56,11 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          borderTopWidth: StyleSheet.hairlineWidth,
+        },
         tabBarButton: (props) => (
           <RoutedTabBarButton
             {...props}

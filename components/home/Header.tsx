@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/ui/Avatar';
 import { Icon } from '@/components/ui/Icon';
 import { TOUCH_TARGET_MIN } from '@/constants';
-import { radii, spacing, typography, useColors, useScheme } from '@/theme';
+import { radii, spacing, typography, useColors, useScheme, useThemeContext } from '@/theme';
 import React, { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -10,7 +10,7 @@ interface Props {
     onPressActivity?: () => void;
     onPressGrid?: () => void;
     onPressMenu?: () => void;
-    onPressSettings?: () => void;
+    onPressTheme?: () => void;
 }
 
 const HeaderInner: React.FC<Props> = ({
@@ -18,10 +18,11 @@ const HeaderInner: React.FC<Props> = ({
     onPressActivity,
     onPressGrid,
     onPressMenu,
-    onPressSettings,
 }) => {
     const c = useColors();
     const scheme = useScheme();
+    const { toggle } = useThemeContext();
+
     return (
         <View>
             <View style={styles.topRow}>
@@ -49,7 +50,7 @@ const HeaderInner: React.FC<Props> = ({
                     />
                     <IconButton
                         name={scheme === 'dark' ? 'sun' : 'moon'}
-                        onPress={onPressSettings}
+                        onPress={toggle}
                         label={scheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                         color={c.textPrimary}
                     />

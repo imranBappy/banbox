@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/ui/Avatar';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { spacing } from '@/theme';
-import { RecentlyViewedItem } from '@/types/inddex';
+import { RecentlyViewedItem } from '@/types';
 import { FlashList } from '@shopify/flash-list';
 import React, { memo } from 'react';
 import { Pressable, View } from 'react-native';

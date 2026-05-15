@@ -21,7 +21,8 @@ interface ProviderProps {
 export const ThemeProvider: React.FC<ProviderProps> = ({ initialMode = 'system', children }) => {
     const systemScheme = useColorScheme();
     const [mode, setMode] = useState<ThemeMode>(initialMode);
-    const [scheme] = useState<ThemeScheme>(systemScheme ?? 'light');
+    const scheme: ThemeScheme =
+        mode === 'system' ? (systemScheme === 'dark' ? 'dark' : 'light') : mode;
     const colors = scheme === 'dark' ? darkPalette : lightPalette;
 
     const toggle = useCallback(() => {
@@ -44,6 +45,7 @@ export const ThemeProvider: React.FC<ProviderProps> = ({ initialMode = 'system',
 
 export const useThemeContext = ():ThemeContextValue => {
     const context = useContext(ThemeContext);
+    
     return context ?? {
         mode: 'light',
         scheme: 'light',

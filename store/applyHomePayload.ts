@@ -1,4 +1,4 @@
-import type { HomeFlashSalePayload, HomePayload } from '@/types/inddex';
+import type { HomeFlashSalePayload, HomePayload } from '@/types';
 
 import type { AuthUser, Category, Product, Story } from './entities';
 import { MAX_VIEWED } from './limits';

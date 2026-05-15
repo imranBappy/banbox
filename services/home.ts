@@ -1,5 +1,5 @@
 import { apiRequest } from '@/libs/api';
-import type { HomePayload } from '@/types/inddex';
+import type { HomePayload } from '@/types';
 
 import { homeApiPath } from './paths';
 

@@ -11,3 +11,18 @@ export function formatCount(value: number): string {
     }
     return String(value);
 }
+
+
+export function pad2(n: number): string {
+    return n.toString().padStart(2, '0');
+}
+
+
+export function msToHMS(ms: number): { hours: number; minutes: number; seconds: number } {
+    const total = Math.max(0, Math.floor(ms / 1000));
+    return {
+        hours: Math.floor(total / 3600),
+        minutes: Math.floor((total % 3600) / 60),
+        seconds: total % 60,
+    };
+}

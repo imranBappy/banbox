@@ -1,6 +1,6 @@
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { radii, spacing, typography, useColors } from '@/theme';
-import { Category } from '@/types/inddex';
+import { Category } from '@/types';
 import { Image } from 'expo-image';
 import React, { memo } from 'react';
 import { Pressable, StyleSheet, Text, View, ViewStyle } from 'react-native';
