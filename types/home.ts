@@ -1,4 +1,5 @@
 import type { AuthUser, Product } from '@/store/entities';
+export type ID = string;
 
 /** Raw `/home` response; fields are normalized in `applyHomePayload`. */
 export type HomePayload = {
@@ -24,4 +25,12 @@ export function isAuthUserPayload(raw: unknown): raw is AuthUser {
     if (!raw || typeof raw !== 'object') return false;
     const o = raw as Record<string, unknown>;
     return typeof o.id === 'string' && typeof o.email === 'string';
+}
+
+
+export interface Announcement {
+    id: ID;
+    title: string;
+    body: string;
+    ctaLabel?: string;
 }
