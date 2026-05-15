@@ -47,3 +47,10 @@ export interface OrderStatus {
     label: string;
     hasBadge?: boolean;
 }
+
+export interface Story {
+    id: ID;
+    imageUrl: string;
+    isLive?: boolean;
+    author?: string;
+}
