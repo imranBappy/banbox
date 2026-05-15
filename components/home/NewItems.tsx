@@ -1,6 +1,6 @@
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { spacing } from '@/theme/spacing';
-import { Product } from '@/types/home';
+import { Product } from '@/types/inddex';
 import { FlashList } from '@shopify/flash-list';
 import React, { memo } from 'react';
 import { View } from 'react-native';

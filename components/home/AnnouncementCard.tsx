@@ -1,6 +1,6 @@
 import { Icon } from '@/components/ui/Icon';
 import { radii, spacing, typography, useColors } from '@/theme';
-import { Announcement } from '@/types/home';
+import { Announcement } from '@/types/inddex';
 import React, { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 

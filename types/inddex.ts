@@ -65,3 +65,11 @@ export interface Product {
     badge?: 'new' | 'sale' | 'hot';
     discountPercent?: number;
 }
+
+
+export interface Category {
+    id: ID;
+    label: string;
+    count: number;
+    images: string[];
+}

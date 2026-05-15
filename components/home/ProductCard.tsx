@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/Badge';
 import { Icon } from '@/components/ui/Icon';
 import { radii, spacing, typography, useColors } from '@/theme';
-import { Product } from '@/types/home';
+import { Product } from '@/types/inddex';
 import { formatCount, formatPrice } from '@/utils/format';
 import { Image } from 'expo-image';
 import React, { memo } from 'react';

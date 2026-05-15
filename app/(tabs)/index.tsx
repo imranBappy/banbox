@@ -1,4 +1,5 @@
 import { AnnouncementCard } from '@/components/home/AnnouncementCard';
+import { Categories } from '@/components/home/Categories';
 import { Header } from '@/components/home/Header';
 import { MostPopular } from '@/components/home/MostPopular';
 import { NewItems } from '@/components/home/NewItems';
@@ -9,7 +10,7 @@ import { fetchHome } from '@/services/home';
 import { Product, applyHomePayload, useBanboxStore } from '@/store';
 import { useColors } from '@/theme';
 import { spacing } from '@/theme/spacing';
-import { Announcement, OrderStatus, RecentlyViewedItem, Story } from '@/types/home';
+import { Announcement, OrderStatus, RecentlyViewedItem, Story } from '@/types/inddex';
 import { useCallback, useEffect, type FC } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,6 +27,7 @@ export const HomeScreen: FC = () => {
     const storiesProducts = useBanboxStore((s) => s.stories);
     const newItemsProducts = useBanboxStore((s) => s.newItems);
     const mostPopularProducts = useBanboxStore((s) => s.mostPopularItems);
+    const categoriesProducts = useBanboxStore((s) => s.categories);
     const loadHome = useCallback(async () => {
         try {
             const data = await fetchHome(accessToken);
@@ -54,6 +56,7 @@ export const HomeScreen: FC = () => {
                 <Stories stories={storiesProducts as unknown as Story[]} />
                 <NewItems items={newItemsProducts as unknown as Product[]} />
                 <MostPopular items={mostPopularProducts as unknown as Product[]} />
+                <Categories items={categoriesProducts as unknown as Category[]} />
             </ScrollView>
         </View>
     );
